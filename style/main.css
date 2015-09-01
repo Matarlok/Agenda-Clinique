@@ -1,0 +1,27 @@
+/* Feuille de style principale du site Agenda */
+header {
+
+}
+
+footer {
+
+}
+
+th {
+    border: solid 2px;
+    width:  50%;
+}
+
+div {
+    margin-top: 1%;
+}
+.centered {
+    position: relative; /* or absolute */
+    left: 39%;
+}
+.text{
+    text-align: center;
+}
+.spacer{
+    margin-left: 2%;
+}
