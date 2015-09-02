@@ -50,7 +50,7 @@
                     <div class="col-lg-6">
                         <?php
                         foreach($liste_employes as $key => $employe){
-                            echo "<li><a href='index.php?id=" . $key . "'>" . $employe["emp_name"] . "</a></li> ";
+                            echo "<li><a href='index.php?id=" . $key . "'>" . "(" . $key . ") " . $employe["emp_name"] .  "</a></li> ";
                         }
                         ?>
                     </div>
