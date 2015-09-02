@@ -1,81 +1,249 @@
 <?php
+
     require_once 'data/_data.php';
 
     // TODO: Lire et mettre à jour l'id de l'employé en Query string
-    //Get id from $_GET (url parameters). If no id in url, get employer id 102
-    //---------------------------------------------------------------------------------------------------------------------
-    $emp_id = $_GET['id'];
-
-    if($emp_id == ""){
-        $emp_id = 102;
-    }
+    // Get id from $_GET (url parameters). If no id in url, get employer id 102
+    //------------------------------------------------------------------------------------------------------------------->
+    $emp_id = (isset($_GET['id'])) ? $_GET['id'] : '102';
 
     $liste_employes = get_employes(); // Liste des noms de tous les employés
     $emp_data = $liste_employes[$emp_id];
     $agenda = get_agenda($emp_id);
+
 ?>
+
+
+<!DOCTYPE html>
 <html>
-	<head>
-        <meta charset = "UTF-8" /><!--- HTML charset declaration--- !-->
-        <meta name="viewport" content="width=device-width, initial-scale=1"/><!--- Guaranty UI responsiveness--- !-->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--- Edge browse compatibility--- !-->
-        <title>Agenda Cabinet Médical</title><!--- Document title--- !-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"><!--- BootStrap CSS online library--- !-->
-        <link href="style/main.css" rel="stylesheet"/><!--- CSS local library--- !-->
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Agenda-Clinique</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css" >
+    </head>
 
 
-	<body>
-        <!PHP request _view_header.php file
-        ----------------------------------------------------------------------------------------------------------------->
-		<?php require_once('view_bloc/_view_header.php') ?>
-        <div class="spacer">
+    <body>
+        <header>
             <div>
-
-
-                <!Employee activity
-                --------------------------------------------------------------------------------------------------------->
-                <h2>Activité de l'employé <?php echo $emp_data['emp_name']  . " = " . $emp_data['emp_type']?></h2>
-
-
-                <!Employee menu
-                --------------------------------------------------------------------------------------------------------->
+                <div id="nom_clinique">
+                    <h1 style="text-align: center"><?php echo NOM_CLINIQUE; ?></h1>
+                </div>
                 <div>
-                    <?php
-                        foreach($liste_employes as $key => $employe){
-                            echo "<li><a href='index.php?id=" . $key . "'>" . $employe["emp_name"] . "</a></li> ";
-                        }
-                    ?>
+                    <img src="images/logo.jpg">
                 </div>
             </div>
+        </header>
 
 
-            <!Employee morning schedule
-            ------------------------------------------------------------------------------------------------------------->
-            <div id="agenda">
-                <table>
-                    <tr><th class="text">Heure</th><th class="text">Activité</th></tr>
-                    <tr><th class="text">--------</th><th class="text">-----------</th></tr>
+        <!Menu block
+        ----------------------------------------------------------------------------------------------------------------->
+        <div>
+            <h3>Activité de l'employé <?php echo $emp_data['emp_name']  . " = " . $emp_data['emp_type']?></h3>
+            <div class="container marketing">
+                <div class="col-lg-6 text-center">
                     <?php
-                        // TODO: Afficher l'agenda de l'employé
+                    foreach($liste_employes as $key => $employe){
+                        echo "<li><a href='index.php?id=" . $key . "'>" . $employe["emp_name"] . "</a></li> ";
+                    }
+                    ?>
+                </div>
+
+
+                <div class="col-lg-6 text-center">
+                    <table class="col-lg-7">
+                        <tr> <th>Heure   </th><th>Activité   </th> </tr>
+                        <tr> <th>--------</th><th>-----------</th> </tr>
+                        <?php
                         foreach($agenda as $key => $value){
                             echo "<tr><th class='text'>" . $key . " H</th><th>"  . $value . "</th></tr>";
                         }
-                    ?>
-                </table>
+                        ?>
+                    </table>
+                </div>
+
+
+                <div class="button">
+                    <input id="pop_inscription" type="button" value="Nouvelle employé">
+                </div>
             </div>
-
-
-            <!PHP request _view_footer.php file
-            ------------------------------------------------------------------------------------------------------------->
-            <?php require_once('view_bloc/_view_footer.php') ?>
         </div>
 
 
-        <!Script declaration
+        <! Form page information
         ----------------------------------------------------------------------------------------------------------------->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><!--- Jquery online library--- !-->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script><!--- BootStrap online JS library--- !-->
-        <script src="js/functions.js"></script><!--- Locl js library--- !-->
-	</body>
+        <div>
+            <div class="modal fade" id="inscription">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h1 class="modal-title text-center">Nouvelle horraire</h1>
+                        </div>
+
+
+                        <div class="modal-body">
+                            <form>
+
+                                <! Error messages
+                                ----------------------------------------------------------------------------------------->
+                                <div id="errorMessage" class="col-lg-12 alert alert-danger hidden text-center" role="alert">
+                                    Vous devez completer TOUS les champs du formulaire
+                                </div>
+
+
+                                <div id="errorMessagePassword" class="col-lg-12 alert alert-danger hidden text-center" role="alert">
+                                    Les mots de passe ne correspondent pas
+                                </div>
+
+
+                                <! Name field
+                                ----------------------------------------------------------------------------------------->
+                                <div class="col-lg-12">
+
+                                    <div class="col-lg-12">
+                                        <h3><span class="label label-danger text-center">Nom</span></h3>
+                                    </div>
+
+                                    <div class="form-group" id="nameField">
+                                        <input type="text" class="form-control" id="inputName" placeholder="Nom">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-4"></div>
+                                <div class="col-lg-4">
+
+                                    <div class="col-lg-12">
+                                        <h3><span class="label label-danger text-center">ID</span></h3>
+                                    </div>
+
+                                    <div class="form-group" id="idField">
+                                        <input type="text" class="form-control" id="inputID" placeholder="ID">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4"></div>
+
+
+                                <! Title field
+                                ----------------------------------------------------------------------------------------->
+                                <div class="col-lg-12">
+
+                                    <div class="col-lg-12">
+                                        <h3><span class="label label-danger text-center">Titre</span></h3>
+                                    </div>
+                                    <div class="col-lg-2"></div>
+                                    <div class="col-lg-8">
+                                        <select class='form-control'>
+                                            <?php
+                                                foreach($totalTitles as $title) {
+                                                    echo "<option value='" . $title . "'>" . $title . "</option>";
+                                                }
+                                                echo "</select>";
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2"></div>
+                                </div>
+
+
+                                <! Hour field
+                                ----------------------------------------------------------------------------------------->
+                                <div class="col-lg-6">
+
+                                    <div class="col-lg-12">
+                                        <h3><span class="label label-danger text-center">Heure</span></h3>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <table>
+                                            <tr> <th>--------</th></tr>
+                                            <?php
+                                                foreach($totalHours as $hour) {
+                                                    echo "<tr><th>" . $hour . "</th></tr>";
+                                                }
+                                            ?>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <! Activity fields
+                                ----------------------------------------------------------------------------------------->
+                                <div class="col-lg-6">
+
+                                    <div class="col-lg-12">
+                                        <h3><span class="label label-danger text-center">Activité</span></h3>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <table>
+                                            <tr><th>--------</th></tr>
+                                            <?php
+                                                for($i=1; $i <= count($totalHours); $i++) {
+                                                    echo "<tr><th><select style='width:100%;'>";
+
+                                                        $activities = get_activites();
+                                                        echo "<option value='Hors'>Hors</option>";
+
+                                                        foreach($activities as $activity) {
+                                                            if ($activity != "Hors"){
+                                                                echo "<option value='" . $activity . "'>" . $activity . "</option>";
+                                                            }
+                                                        }
+                                                    echo "</select></th></tr>";
+                                                }
+                                            ?>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <! Submit button
+                                ------------------------------------------------------------------------------------------------->
+                                <div class="col-lg-12">
+                                    <div class="col-lg-12 text-right">
+                                        <br/>
+                                        <button id="formSubmit" type="button" class="btn btn-info">Ajouter horraire</button>
+                                    </div>
+                                </div>
+
+                                <! Success message
+                                ----------------------------------------------------------------------------------------->
+                                <div id="success" class="col-lg-12 alert alert-success hidden text-center" role="alert">
+                                    Merci d'avoir tout remplie!
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <! Submit button
+                        ------------------------------------------------------------------------------------------------->
+                        <div class="modal-footer" style="border-top: 0">
+                            <br>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <footer class="text-center">
+            <p>&copy; 2015 iSi-productions &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        </footer>
+
+
+        <! Linked scripts
+        ----------------------------------------------------------------------------------------------------------------->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="js/functions.js"></script>
+    </body>
 </html>

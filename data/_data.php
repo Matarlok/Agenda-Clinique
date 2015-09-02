@@ -1,24 +1,25 @@
 <?php
-    /**Define variable
+    /** Define variable
     ------------------------------------------------------------------------------------------------------------------------**/
     define( 'PARAM_EMP_ID'   , 'emp_id')   ;
     define( 'PARAM_EMP_NAME' , 'emp_name') ;
     define( 'PARAM_EMP_TYPE' , 'emp_type') ;
 
 
-    /**Clinique name
+    /** Clinique name
     ------------------------------------------------------------------------------------------------------------------------**/
     define( 'NOM_CLINIQUE' , 'Clinique médicale Tremblay Zintohl Müller') ;
 
 
-    /**Les activités de la clinique (les activités suivies de _MDC sont en lien avec les clients et leurs dossiers
+    /** Les activités de la clinique (les activités suivies de _MDC sont en lien avec les clients et leurs dossiers
     ------------------------------------------------------------------------------------------------------------------------**/
+    define( 'EMPL_TYPE_'          , '-- Selection titre --')   ;
     define( 'EMPL_TYPE_MEDECIN'   , 'Médecin')                 ;
     define( 'EMPL_TYPE_INFIRMIER' , 'Infirmier')               ;
     define( 'EMPL_TYPE_ADMIN'     , 'Personnel administratif') ;
 
 
-    /**Les activités de la clinique (les activités suivies de _MDC sont en lien avec les clients et leurs dossiers
+    /** Les activités de la clinique (les activités suivies de _MDC sont en lien avec les clients et leurs dossiers
     ------------------------------------------------------------------------------------------------------------------------**/
     define( 'ACT_CONSULT_MDC'  ,  'Consultation')         ;  // Consulation
     define( 'ACT_FORM_CONSEIL' ,  'Formation et conseil') ;  // Formation et conseil médical
@@ -29,7 +30,7 @@
     define( 'ACT_HORS'         ,  'Hors')                 ;  // Hors clinique
 
 
-    /**Return current employee list
+    /** Return current employee list
     ------------------------------------------------------------------------------------------------------------------------**/
     function get_employes() {
             return array(
@@ -42,7 +43,7 @@
     }
 
 
-    /**Possible titles
+    /** Possible titles
     ------------------------------------------------------------------------------------------------------------------------**/
     function get_activites(){
             return array(
@@ -57,7 +58,7 @@
     }
 
 
-    /**Employee morning schedule
+    /** Employee morning schedule
     ------------------------------------------------------------------------------------------------------------------------**/
     function get_agenda($id) {
         switch ($id) {
@@ -123,8 +124,29 @@
                         '13' => ACT_FORM_CONSEIL ,
                         '14' => ACT_DOSSIERS_MDC ,
                         '15' => ACT_DOSSIERS_MDC ,
-               );
+                );
             break;
         }return $result;
     }
+
+
+    /** Form array
+    ------------------------------------------------------------------------------------------------------------------------**/
+    $totalHours =  array(
+        '8'  ,
+        '9'  ,
+        '10' ,
+        '11' ,
+        '12' ,
+        '13' ,
+        '14' ,
+        '15' ,
+    );
+
+    $totalTitles =  array(
+        EMPL_TYPE_         ,
+        EMPL_TYPE_INFIRMIER ,
+        EMPL_TYPE_MEDECIN   ,
+        EMPL_TYPE_ADMIN     ,
+    );
 ?>
