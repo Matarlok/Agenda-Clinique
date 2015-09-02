@@ -1,0 +1,60 @@
+
+/* GLOBAL STYLES
+-------------------------------------------------- */
+
+
+body {
+  padding-bottom: 40px;
+  color: #5a5a5a;
+  height: 100%;
+}
+
+h3 {
+  text-align: center;
+}
+
+th {
+  border: solid 2px;
+  width:  50%;
+  text-align: center;
+}
+
+img {
+  margin: auto;
+  margin-left: 30%;
+  max-height: 100%;
+  max-width: 100%;
+  width: 35%;
+}
+
+input {
+  width: 20%;
+  margin-top: 1%;
+}
+
+table{
+  width: 100%;
+}
+
+#success{
+  margin-top: 2%;
+}
+
+.button {
+  width: 100%;
+  text-align: center;
+}
+
+/* MENU
+-------------------------------------------------- */
+.marketing .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
