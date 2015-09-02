@@ -11,21 +11,15 @@ $(document).ready(function () {
 	$("#formSubmit").click(function(){
 
 		/**-- if any field is empty show error message ------------------------------------------------------------------**/
-		if ( ($("#inputName").val() == "" || $("#inputTitle").val() == "" || $("#inputID").val() == "") ){
+		if ( ($("#inputName").val() == "" || $("#inputTitle").val() == "" || $("#inputID").val() == "" || $("#inputTitle").val() == "-- Selection titre --") ){
 			$("#errorMessage").removeClass("hidden");
 		} else {
 			$("#errorMessage").addClass("hidden");
 		}
 
-		/**-- if checkBox is not true show checkBox error message -------------------------------------------------------**/
-		if ($('#srap').is(":checked") == true) {
-			$("#scrapSucess").removeClass("hidden");
-		} else {
-			$("#scrapSucess").addClass("hidden");
-		}
 
 		/**-- if everything is in order show success message ------------------------------------------------------------**/
-        if ( ($("#inputName").val() != "" && $("#inputTitle").val() != "" && $("#inputID").val() != "") ){
+        if ( ($("#inputName").val() != "" && $("#inputTitle").val() != "" && $("#inputID").val() != "" && $("#inputTitle").val() != "-- Selection titre --") ){
             $("#success").removeClass("hidden");
         } else {
             $("#success").addClass("hidden");
@@ -46,6 +40,13 @@ $(document).ready(function () {
 		} else {
 			$("#idField").removeClass("has-error");
 		}
+
+        /**-- if title field is empty highlight ID input field -------------------------------------------------------------*/
+        if ($("#inputTitle").val() == "-- Selection titre --"){
+            $("#titleField").addClass("has-error");
+        } else {
+            $("#titleField").removeClass("has-error");
+        }
 
 	});
 });

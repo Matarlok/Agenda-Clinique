@@ -26,57 +26,67 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css" >
     </head>
-
-
     <body>
-        <header>
-            <div>
-                <div id="nom_clinique">
-                    <h1 style="text-align: center"><?php echo NOM_CLINIQUE; ?></h1>
-                </div>
+
+
+<! FRONTPAGE SECTION
+------------------------------------------------------------------------------------------------------------------------------------------------------>
+        <div class="wrapper">
+            <header>
                 <div>
-                    <img src="images/logo.jpg">
+                    <div id="nom_clinique">
+                        <h1 style="text-align: center"><?php echo NOM_CLINIQUE; ?></h1>
+                    </div>
+                    <div>
+                        <img src="images/logo.jpg">
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
 
 
-        <!Menu block
-        ----------------------------------------------------------------------------------------------------------------->
-        <div>
-            <h3>Activité de l'employé <?php echo $emp_data['emp_name']  . " = " . $emp_data['emp_type']?></h3>
-            <div class="container marketing">
-                <div class="col-lg-6 text-center">
-                    <?php
-                    foreach($liste_employes as $key => $employe){
-                        echo "<li><a href='index.php?id=" . $key . "'>" . $employe["emp_name"] . "</a></li> ";
-                    }
-                    ?>
-                </div>
-
-
-                <div class="col-lg-6 text-center">
-                    <table class="col-lg-7">
-                        <tr> <th>Heure   </th><th>Activité   </th> </tr>
-                        <tr> <th>--------</th><th>-----------</th> </tr>
+            <div>
+                <h3>Activité de l'employé <?php echo $emp_data['emp_name']  . " = " . $emp_data['emp_type']?></h3>
+                <div class="container marketing">
+                    <div class="col-lg-6 text-center">
                         <?php
-                        foreach($agenda as $key => $value){
-                            echo "<tr><th class='text'>" . $key . " H</th><th>"  . $value . "</th></tr>";
+                        foreach($liste_employes as $key => $employe){
+                            echo "<li><a href='index.php?id=" . $key . "'>" . $employe["emp_name"] . "</a></li> ";
                         }
                         ?>
-                    </table>
-                </div>
+                    </div>
 
 
-                <div class="button">
-                    <input id="pop_newUser" type="button" value="Nouvelle employé">
+                    <div class="col-lg-6 text-center">
+                        <table class="col-lg-7">
+                            <tr> <th>Heure   </th><th>Activité   </th> </tr>
+                            <tr> <th>--------</th><th>-----------</th> </tr>
+                            <?php
+                            foreach($agenda as $key => $value){
+                                echo "<tr><th class='text'>" . $key . " H</th><th>"  . $value . "</th></tr>";
+                            }
+                            ?>
+                        </table>
+                    </div>
+
+
+                    <div class="button">
+                        <input id="pop_newUser" type="button" value="Nouvelle employé">
+                    </div>
                 </div>
+            </div>
+
+
+            <!Disclaimer block
+            ------------------------------------------------------------------------------------------------------------->
+            <div>
+                <br>
+                <p class="text-center">&copy; 2015 iSi-productions &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
             </div>
         </div>
 
 
-        <! Form page information
-        ----------------------------------------------------------------------------------------------------------------->
+<! FORM SECTION
+------------------------------------------------------------------------------------------------------------------------------------------------------>
         <div>
             <div class="modal fade" id="newUser">
                 <div class="modal-dialog">
@@ -96,6 +106,13 @@
                                 ----------------------------------------------------------------------------------------->
                                 <div id="errorMessage" class="col-lg-12 alert alert-danger hidden text-center" role="alert">
                                     Vous devez completer TOUS les champs du formulaire
+                                </div>
+
+
+                                <! Success message
+                                ----------------------------------------------------------------------------------------->
+                                <div id="success" class="col-lg-12 alert alert-success hidden text-center" role="alert">
+                                    Merci d'avoir tout remplie!
                                 </div>
 
 
@@ -123,7 +140,7 @@
                                     </div>
 
                                     <div class="form-group" id="idField">
-                                        <input type="text" class="form-control" id="inputID" placeholder="ID">
+                                        <input type="text" class="form-control" id="inputID" placeholder="ID" maxlength="3">
                                     </div>
                                 </div>
                                 <div class="col-lg-4"></div>
@@ -138,17 +155,14 @@
                                     </div>
 
                                     <div class="col-lg-2"></div>
-                                    <div class="col-lg-8">
-                                        <label>
-                                            <select class='form-control'>
-                                                <?php
-                                                    foreach($totalTitles as $title) {
-                                                        echo "<option value='" . $title . "'>" . $title . "</option>";
-                                                    }
-                                                    echo "</select>";
-                                                ?>
-                                            </select>
-                                        </label>
+                                    <div class="col-lg-8" id="titleField">
+                                        <select class='form-control' id="inputTitle">
+                                            <?php
+                                                foreach($totalTitles as $title) {
+                                                    echo "<option value='" . $title . "'>" . $title . "</option>";
+                                                }
+                                            ?>
+                                        </select>
                                     </div>
                                     <div class="col-lg-2"></div>
                                 </div>
@@ -207,35 +221,29 @@
 
 
                                 <! Submit button
-                                ------------------------------------------------------------------------------------------------->
+                                ----------------------------------------------------------------------------------------->
                                 <div class="col-lg-12">
                                     <div class="col-lg-12 text-right">
                                         <br/>
                                         <button id="formSubmit" type="button" class="btn btn-info">Ajouter horraire</button>
                                     </div>
                                 </div>
-
-
-                                <! Success message
-                                ----------------------------------------------------------------------------------------->
-                                <div id="success" class="col-lg-12 alert alert-success hidden text-center" role="alert">
-                                    Merci d'avoir tout remplie!
-                                </div>
                             </form>
                         </div>
+
+
+                        <! Closing form block
+                        ----------------------------------------------------------------------------------------->
                         <div class="modal-footer" style="border-top: 0"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <br>
-        <footer class="text-center">
-            <p>&copy; 2015 iSi-productions &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-        </footer>
 
 
-        <! Linked scripts
-        ----------------------------------------------------------------------------------------------------------------->
+
+<! LINKED SCRIPTS
+------------------------------------------------------------------------------------------------------------------------------------------------------>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="js/functions.js"></script>
