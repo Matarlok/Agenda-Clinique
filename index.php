@@ -47,7 +47,7 @@
             <div>
                 <h3>Activité de l'employé <?php echo $emp_data['emp_name']  . " = " . $emp_data['emp_type']?></h3>
                 <div class="container marketing">
-                    <div class="col-lg-6 text-center">
+                    <div class="col-lg-6">
                         <?php
                         foreach($liste_employes as $key => $employe){
                             echo "<li><a href='index.php?id=" . $key . "'>" . $employe["emp_name"] . "</a></li> ";

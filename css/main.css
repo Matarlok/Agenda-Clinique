@@ -36,6 +36,11 @@ table{
   width: 100%;
 }
 
+li{
+    padding-top: 1%;
+    padding-left: 45%;
+}
+
 #success{
   margin-top: 2%;
 }
