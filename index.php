@@ -69,7 +69,7 @@
 
 
                 <div class="button">
-                    <input id="pop_inscription" type="button" value="Nouvelle employé">
+                    <input id="pop_newUser" type="button" value="Nouvelle employé">
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
         <! Form page information
         ----------------------------------------------------------------------------------------------------------------->
         <div>
-            <div class="modal fade" id="inscription">
+            <div class="modal fade" id="newUser">
                 <div class="modal-dialog">
                     <div class="modal-content">
 
@@ -99,11 +99,6 @@
                                 </div>
 
 
-                                <div id="errorMessagePassword" class="col-lg-12 alert alert-danger hidden text-center" role="alert">
-                                    Les mots de passe ne correspondent pas
-                                </div>
-
-
                                 <! Name field
                                 ----------------------------------------------------------------------------------------->
                                 <div class="col-lg-12">
@@ -118,6 +113,8 @@
                                 </div>
 
 
+                                <! ID field
+                                ----------------------------------------------------------------------------------------->
                                 <div class="col-lg-4"></div>
                                 <div class="col-lg-4">
 
@@ -139,16 +136,19 @@
                                     <div class="col-lg-12">
                                         <h3><span class="label label-danger text-center">Titre</span></h3>
                                     </div>
+
                                     <div class="col-lg-2"></div>
                                     <div class="col-lg-8">
-                                        <select class='form-control'>
-                                            <?php
-                                                foreach($totalTitles as $title) {
-                                                    echo "<option value='" . $title . "'>" . $title . "</option>";
-                                                }
-                                                echo "</select>";
-                                            ?>
-                                        </select>
+                                        <label>
+                                            <select class='form-control'>
+                                                <?php
+                                                    foreach($totalTitles as $title) {
+                                                        echo "<option value='" . $title . "'>" . $title . "</option>";
+                                                    }
+                                                    echo "</select>";
+                                                ?>
+                                            </select>
+                                        </label>
                                     </div>
                                     <div class="col-lg-2"></div>
                                 </div>
@@ -215,6 +215,7 @@
                                     </div>
                                 </div>
 
+
                                 <! Success message
                                 ----------------------------------------------------------------------------------------->
                                 <div id="success" class="col-lg-12 alert alert-success hidden text-center" role="alert">
@@ -222,14 +223,7 @@
                                 </div>
                             </form>
                         </div>
-
-
-                        <! Submit button
-                        ------------------------------------------------------------------------------------------------->
-                        <div class="modal-footer" style="border-top: 0">
-                            <br>
-
-                        </div>
+                        <div class="modal-footer" style="border-top: 0"></div>
                     </div>
                 </div>
             </div>
