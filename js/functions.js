@@ -6,6 +6,11 @@ $(document).ready(function () {
 			$('#newUser').modal('toggle');
 		});
 
+        /**-- OnClick on id "pop_newUser" toggle modal function to visible ----------------------------------------------**/
+        $('#pop_login').click(function() {
+            $('#login').modal('toggle');
+        });
+
 
 //--- FORM CHECK FUNCTION -----------------------------------------------------------------------------------------------**/
 	$("#formSubmit").click(function(){

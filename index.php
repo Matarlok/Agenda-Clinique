@@ -29,10 +29,15 @@
     <body>
 
 
-<! FRONTPAGE SECTION
+<! FRONT PAGE SECTION
 ------------------------------------------------------------------------------------------------------------------------------------------------------>
         <div class="wrapper">
             <header>
+                <div class="text-right">
+                    <span><?php echo "Bienvenue " . "'user'" ?></span>
+                    <button id="pop_login" class="text-right btn btn-danger" type="button">Login</button>
+                </div>
+
                 <div>
                     <div id="nom_clinique">
                         <h1 style="text-align: center"><?php echo NOM_CLINIQUE; ?></h1>
@@ -45,7 +50,7 @@
 
 
             <div>
-                <h3>Activité de l'employé <?php echo $emp_data['emp_name']  . " = " . $emp_data['emp_type']?></h3>
+                <h3>Horraire de <?php echo $emp_data['emp_name'] . " " . $emp_data['emp_type']?></h3>
                 <div class="container marketing">
                     <div class="col-lg-6">
                         <?php
@@ -54,6 +59,7 @@
                         }
                         ?>
                     </div>
+                    <br>
 
 
                     <div class="col-lg-6 text-center">
@@ -70,7 +76,7 @@
 
 
                     <div class="button">
-                        <input id="pop_newUser" type="button" value="Nouvelle employé">
+                        <input id="pop_newUser" type="button"  class="btn btn-danger" value="Nouvelle employé">
                     </div>
                 </div>
             </div>
@@ -85,7 +91,83 @@
         </div>
 
 
-<! FORM SECTION
+
+<! LOGIN SECTION
+------------------------------------------------------------------------------------------------------------------------------------------------------>
+        <div>
+            <div class="modal fade" id="login">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h1 class="modal-title text-center">Login</h1>
+                        </div>
+
+
+                        <div class="modal-body">
+                            <form>
+
+                                <! Error messages
+                                ----------------------------------------------------------------------------------------->
+                                <div id="loginErrorMessage" class="col-lg-12 alert alert-danger hidden text-center" role="alert">
+                                    Login invalide
+                                </div>
+
+
+                                <! Login field
+                                ----------------------------------------------------------------------------------------->
+                                <div class="col-lg-12">
+
+                                    <div class="col-lg-12">
+                                        <h3><span class="label label-danger text-center">Utilisateur</span></h3>
+                                    </div>
+
+                                    <div class="form-group" id="loginField">
+                                        <input type="text" class="form-control" id="inputLogin" placeholder="Untilisateur">
+                                    </div>
+                                </div>
+
+
+
+                                <! Password field
+                                ----------------------------------------------------------------------------------------->
+                                <div class="col-lg-12">
+
+                                    <div class="col-lg-12">
+                                        <h3><span class="label label-danger text-center">Mot de passe</span></h3>
+                                    </div>
+
+                                    <div class="form-group" id="passwordField">
+                                        <input type="text" class="form-control" id="inputPassword" placeholder="Mot de passe">
+                                    </div>
+                                </div>
+
+
+
+                                <! Submit button
+                                ----------------------------------------------------------------------------------------->
+                                <div class="col-lg-12">
+                                    <div class="col-lg-12 text-right">
+                                        <br/>
+                                        <button type="button" class="btn btn-info">Login</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <! Closing form block
+                        ------------------------------------------------------------------------------------------------->
+                        <div class="modal-footer" style="border-top: 0"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<! NEW USER FORM SECTION
 ------------------------------------------------------------------------------------------------------------------------------------------------------>
         <div>
             <div class="modal fade" id="newUser">
@@ -233,7 +315,7 @@
 
 
                         <! Closing form block
-                        ----------------------------------------------------------------------------------------->
+                        ------------------------------------------------------------------------------------------------->
                         <div class="modal-footer" style="border-top: 0"></div>
                     </div>
                 </div>
