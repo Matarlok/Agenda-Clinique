@@ -35,9 +35,9 @@
     function get_employes() {
             return array(
                     '102' => array( 'emp_name' => 'Bernard Morrin'   , 'emp_type' => EMPL_TYPE_INFIRMIER) ,
-                    '136' => array( 'emp_name' => 'Tremblay Riegler'  , 'emp_type' => EMPL_TYPE_MEDECIN)   ,
-                    '025' => array( 'emp_name' => 'Zintohl Parkman'   , 'emp_type' => EMPL_TYPE_MEDECIN)   ,
-                    '082' => array( 'emp_name' => 'Müller Sinclair'    , 'emp_type' => EMPL_TYPE_MEDECIN)   ,
+                    '136' => array( 'emp_name' => 'Tremblay Riegler' , 'emp_type' => EMPL_TYPE_MEDECIN)   ,
+                    '025' => array( 'emp_name' => 'Zintohl Parkman'  , 'emp_type' => EMPL_TYPE_MEDECIN)   ,
+                    '082' => array( 'emp_name' => 'Müller Sinclair'  , 'emp_type' => EMPL_TYPE_MEDECIN)   ,
                     '045' => array( 'emp_name' => 'Abenassis Caspar' , 'emp_type' => EMPL_TYPE_ADMIN)     ,
             );
     }

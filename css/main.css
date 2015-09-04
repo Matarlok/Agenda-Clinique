@@ -50,8 +50,8 @@ li{
 }
 
 .button {
-  width: 100%;
-  text-align: center;
+    width: 100%;
+    text-align: center;
 }
 
 .wrapper{
@@ -63,14 +63,9 @@ li{
 
 /* MENU
 -------------------------------------------------- */
-.marketing .col-lg-4 {
-  margin-bottom: 20px;
-  text-align: center;
-}
-.marketing h2 {
-  font-weight: normal;
-}
-.marketing .col-lg-4 p {
-  margin-right: 10px;
-  margin-left: 10px;
+.marketing p {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    text-align: center;
 }
