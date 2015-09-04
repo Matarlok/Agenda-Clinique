@@ -200,14 +200,28 @@
 
                                 <! Name field
                                 ----------------------------------------------------------------------------------------->
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
+
+                                    <div class="col-lg-12">
+                                        <h3><span class="label label-danger text-center">Prenom</span></h3>
+                                    </div>
+
+                                    <div class="form-group" id="nameField">
+                                        <input type="text" class="form-control" id="inputName" placeholder="Prenom">
+                                    </div>
+                                </div>
+
+
+                                <! Last name field
+                                ----------------------------------------------------------------------------------------->
+                                <div class="col-lg-6">
 
                                     <div class="col-lg-12">
                                         <h3><span class="label label-danger text-center">Nom</span></h3>
                                     </div>
 
-                                    <div class="form-group" id="nameField">
-                                        <input type="text" class="form-control" id="inputName" placeholder="Nom">
+                                    <div class="form-group" id="lastNameField">
+                                        <input type="text" class="form-control" id="inputLastName" placeholder="Nom">
                                     </div>
                                 </div>
 

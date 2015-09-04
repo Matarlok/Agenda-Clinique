@@ -39,6 +39,13 @@ $(document).ready(function () {
 			$("#nameField").removeClass("has-error");
 		}
 
+		/**-- if lastname field is empty highlight name input field ---------------------------------------------------------**/
+		if ($("#inputLastName").val() == ""){
+			$("#lastNameField").addClass("has-error");
+		} else {
+			$("#lastNameField").removeClass("has-error");
+		}
+
 		/**-- if ID field is empty highlight ID input field -------------------------------------------------------------*/
 		if ($("#inputID").val() == ""){
 			$("#idField").addClass("has-error");
